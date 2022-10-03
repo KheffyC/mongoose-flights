@@ -42,3 +42,18 @@ nav div a{
   padding: 15px;
   background-color: whitesmoke
 }
+
+.flight-details{
+  text-decoration: none;
+  color: black;
+}
+
+#show-page {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+#show-page div:nth-child(even) {
+  font-weight: bold;
+}
