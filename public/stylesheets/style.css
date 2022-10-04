@@ -48,12 +48,20 @@ nav div a{
   color: black;
 }
 
-#show-page {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
+.show-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-#show-page div:nth-child(even) {
+.show-page div:nth-child(even) {
   font-weight: bold;
+}
+
+.arrival-table{
+  text-align: left;
+  align-items: left;
+  padding: 10px;
 }

@@ -45,6 +45,11 @@ function create(req, res){
 
 function show(req, res){
     Flight.findById(req.params.id, function(err, flight){
-        res.render('flights/show', { title: 'Flight Details', flight })
+        let airports = flight.destinations.map(destination => destination.airport)
+        const selectedAirports = ['AUS', 'DFW', 'DEN', 'LAX','SAN']
+        let availableAirports = selectedAirports.filter(selected => {
+            return !airports.includes(selected) && selected !== flight.airport
+        })
+        res.render('flights/show', { title: 'Flight Details', flight, destinations: availableAirports})
     })
 }

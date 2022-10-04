@@ -1,6 +1,7 @@
 <%- include('../partials/head') %>
 <%- include('../partials/navbar') %>
-<section id="show-page">
+<div class="show-page">
+<section class="show-page">
     <div>Airline: </div>
     <div><%= flight.airline %></div>
     <div>Airport: </div>
@@ -9,4 +10,37 @@
     <div><%= flight.flightNo %></div>
     <div>Departs: </div>
     <div><%= flight.departs %></div>
-  </section>
+</section>
+  <br><br><h2>Destinations</h2>
+<form action="/flights/<%= flight._id %>/destinations" method="POST">
+    <label>Airport:</label>
+    <select name="airport">
+      <% destinations.forEach(destination => { %>
+        <option value='<%= destination %>'><%= destination %></option>
+      <% }) %>
+    </select>
+  <label>Arrival:</label>
+  <input type="datetime-local" name="arrival" > 
+  <input type="submit" value="Add Destination">
+</form>
+<% if (flight.destinations.length){ %>
+  <table class="arrival-table">
+    <thead>
+      <tr>
+        <th>Airline</th>
+        <th>Arrival Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flight.destinations.forEach(d => { %>
+        <tr>
+          <td><%= d.airport %></td>
+          <td><%= d.arrival %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5> No Destinations have been chosen yet </h5>
+<% } %>
+  </div>
