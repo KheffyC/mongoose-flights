@@ -43,4 +43,11 @@
 <% } else { %>
   <h5> No Destinations have been chosen yet </h5>
 <% } %>
+  <div>
+    <h2>Tickets</h2>
+    <div class="tickets">
+      <%- tickets.map(t => `<li>Seat - ${t.seat} &nbsp; <span>$ ${t.price}</span></li>`).join(' '); %>
+    </div>
+    <button><a href="/flights/<%= flight._id%>/tickets/new">New Ticket</a></button>
   </div>
+</div>

@@ -1,4 +1,5 @@
-const Flight = require('../models/flight')
+const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
     index,
@@ -50,6 +51,9 @@ function show(req, res){
         let availableAirports = selectedAirports.filter(selected => {
             return !airports.includes(selected) && selected !== flight.airport
         })
-        res.render('flights/show', { title: 'Flight Details', flight, destinations: availableAirports})
+        Ticket.find({flight: flight._id}, function(err, tickets){
+            console.log(tickets, " THIS IS THE TICKETS")
+            res.render('flights/show', { title: 'Flight Details', flight, destinations: availableAirports, tickets})
+        })       
     })
 }
